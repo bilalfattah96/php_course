@@ -63,7 +63,7 @@ if (isset($_POST['btn'])) {
 
 <body>
     <form action="" method="post">
-        Name: <input type="text" name="name"> <br> <br>
+        Name: <input type="text" name="name"> <br> <br> 
         Age: <input type="number" name="age"> <br> <br>
         Email: <input type="email" name="email"> <br> <br>
         <input type="submit" name="btn">
