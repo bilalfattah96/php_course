@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 06, 2024 at 07:58 AM
+-- Generation Time: Aug 13, 2024 at 08:04 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -32,6 +32,7 @@ CREATE TABLE `users` (
   `u_name` varchar(25) NOT NULL,
   `u_email` varchar(35) NOT NULL,
   `age` int(11) NOT NULL,
+  `u_img` varchar(100) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -39,12 +40,11 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`u_id`, `u_name`, `u_email`, `age`, `created_at`) VALUES
-(1, 'bilal', 'bilal@abc.com', 23, '2024-08-03 05:17:54'),
-(2, 'shaheer ali', 'shaheer@abc.com', 21, '2024-08-03 05:19:47'),
-(3, 'mudassir', 'mudassir@abc.com', 23, '2024-08-06 04:26:35'),
-(4, 'ahsaan', 'ahsaan@abc.com', 21, '2024-08-06 05:20:30'),
-(5, 'bilal', 'bilal@abc.com', 32, '2024-08-06 05:22:27');
+INSERT INTO `users` (`u_id`, `u_name`, `u_email`, `age`, `u_img`, `created_at`) VALUES
+(8, 'bilal', 'bilal@abc.com', 23, '1.jpg', '2024-08-08 05:56:04'),
+(10, 'mudassir', 'mudassir@abc.com', 21, 'abc.png', '2024-08-13 04:21:04'),
+(12, 'wahab', 'wahab@gmail.com', 23, 'pizza-3007395_1280.jpg', '2024-08-13 04:26:51'),
+(13, 'shaheer ali', 'shaheer@abc.com', 43, 'depositphotos_4521584-stock-photo-exam.webp', '2024-08-13 04:29:06');
 
 --
 -- Indexes for dumped tables
@@ -64,7 +64,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
