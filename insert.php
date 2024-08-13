@@ -36,12 +36,18 @@ if (isset($_POST['btn'])) {
     $a =  $_POST['age'];
     $e =  $_POST['email'];
 
-    $img_name = $_FILES['img']['name'];
+    $imgname = $_FILES['img']['name'];
+    $tmp =  $_FILES['img']['tmp_name'];
+    // $size = $_FILES['img']['size'];
+    // $type=$_FILES['img']['type'];
+
+
+    move_uploaded_file($tmp,'userImage/'.$imgname);
 
     
-    move_uploaded_file($img_name,'userImage/'.$img_name);
+   
 
-    $sql = " INSERT INTO `users`( `u_name`, `u_email`, `age`,u_img) VALUES ('$n','$e','$a','')";
+    $sql = "INSERT INTO `users`( `u_name`, `u_email`, `age`,u_img) VALUES ('$n','$e','$a','$imgname')";
     $result = mysqli_query($conn, $sql);
 
     if ($result) {
@@ -69,10 +75,11 @@ if (isset($_POST['btn'])) {
 
 <body>
     <form action="" method="post" enctype="multipart/form-data">
-        Name: <input type="text" name="name"> <br> <br> 
+        Name: <input type="text" name="name"> <br> <br>
         Age: <input type="number" name="age"> <br> <br>
         Email: <input type="email" name="email"> <br> <br>
         <input type="file" name="img" id="">
+
         <input type="submit" name="btn">
     </form>
 </body>

@@ -21,6 +21,7 @@ $result = mysqli_query($conn, $sql);
             <th>Name</th>
             <th>Email</th>
             <th>Age</th>
+            <th>User Image</th>
             <th>Created At</th>
             <th colspan="2">Action</th>
 
@@ -34,7 +35,8 @@ $result = mysqli_query($conn, $sql);
                     <td><?php echo $row['u_name']; ?></td>
                     <td><?php echo $row[2]; ?></td>
                     <td><?php echo $row[3]; ?></td>
-                    <td><?php echo $row[4]; ?></td>
+                    <td><img src="<?php echo "userImage/".$row[4]; ?>" alt="" height="50" width="50"></td>
+                    <td><?php echo $row[5]; ?></td>
                     <td><a href="delete.php?id=<?php echo $row[0]; ?>">Delete</a></td>
                     <td><a href="edit.php?id=<?php echo $row[0]; ?>">Edit</a></td>
                 </tr>
