@@ -38,21 +38,30 @@ if (isset($_POST['btn'])) {
 
     $imgname = $_FILES['img']['name'];
     $tmp =  $_FILES['img']['tmp_name'];
-    // $size = $_FILES['img']['size'];
-    // $type=$_FILES['img']['type'];
+    $size = $_FILES['img']['size'];
+    $type = $_FILES['img']['type'];
+    // var_dump($type);
 
+    $max_size = 2 * 1024 * 1024; // 2MB
 
-    move_uploaded_file($tmp,'userImage/'.$imgname);
+    $allowed_types = ['image/png', 'image/jpg', 'image/jpeg'];
 
-    
-   
+    if (in_array($type, $allowed_types)) {
 
-    $sql = "INSERT INTO `users`( `u_name`, `u_email`, `age`,u_img) VALUES ('$n','$e','$a','$imgname')";
-    $result = mysqli_query($conn, $sql);
+        if ($size <= $max_size) {
 
-    if ($result) {
-        // echo '<script>alert("inserted")</script>';
-        header('Location: fecth.php');
+            move_uploaded_file($tmp, 'userImage/' . $imgname);
+            $sql = "INSERT INTO `users`( `u_name`, `u_email`, `age`,u_img) VALUES ('$n','$e','$a','$imgname')";
+            $result = mysqli_query($conn, $sql);
+            if ($result) {
+                // echo '<script>alert("inserted")</script>';
+                header('Location: fecth.php');
+            }
+        } else {
+            echo 'Max 2MB is Allowed';
+        }
+    } else {
+        echo 'Only JPG PNG and JPEG allowed';
     }
 }
 
