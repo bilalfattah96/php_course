@@ -10,9 +10,17 @@ if(isset($_POST['btn'])){
     $a = $_POST['age'];
     $e = $_POST['email'];
 
-  $imgname=  $_FILES['img']['name'];
-   $tmp = $_FILES['img']['tmp_name'];
-move_uploaded_file($tmp,"userImage/".$imgname);
+    if(!empty($_FILES['nimg']['name'])){
+        $imgname=  $_FILES['nimg']['name'];
+        $tmp = $_FILES['nimg']['tmp_name'];
+        move_uploaded_file($tmp,"userImage/".$imgname);
+    }
+    else{
+        $imgname=  $_POST['pimg'];
+    }
+
+  
+
 
     $sqlUpdate = "UPDATE `users` SET `u_name`='$n',`u_email`='$e',`age`='$a', u_img = '$imgname' WHERE u_id = $id";
     $result1 = mysqli_query($conn,$sqlUpdate);
@@ -36,9 +44,9 @@ move_uploaded_file($tmp,"userImage/".$imgname);
         Name: <input type="text" name="name" value="<?php echo $row[1]; ?>"> <br> <br>
         Age: <input type="number" name="age" value="<?php echo $row[3]; ?>"> <br> <br>
         Email: <input type="email" name="email" value="<?php echo $row[2]; ?>"> <br> <br>
-        <img src="<?php echo "userImage/".$row[4]; ?>" alt="" height="50" width="50">
+        <img src="<?php echo "userImage/".$row[4]; ?>" alt="" height="50" width="50"><br> <br>
         <input type="text" hidden value="<?php echo $row[4]; ?>" name="pimg">
-        Image <input type="file" name="img" id="">
+       Choose New Image <input type="file" name="nimg" id=""><br> <br>
         <input type="submit" name="btn" value="Update">
     </form>
 </body>
